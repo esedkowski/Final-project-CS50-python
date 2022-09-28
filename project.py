@@ -15,6 +15,7 @@ from os.path import exists
 #https://cryptography.io/en/latest/fernet/#using-passwords-with-fernet
 
 def sign_up(deposit):
+    print("Creat new account")
     login, login_hash = get_login()
     password, password_hashed = get_password()
     with open("passwords/passwords.csv", "a", newline="") as pass_stor:
@@ -52,7 +53,6 @@ def get_login():
             
 def get_password():
     while True:
-        password = input()
         password = maskpass.askpass(prompt="Password: ", mask="*")
         if not re.search("[a-z]" ,password):
             print("missing lowercase character")
@@ -87,8 +87,8 @@ def gen_key(login, password):
     #print(str(f1.decrypt(token)).strip("b'"))
 
 def sign_in():
+    print("Login in:")
     login = input("Login: ")
-    password = input()
     password = maskpass.askpass(prompt="Password: ", mask="*")
     if veryficaton(login, password):
         login_hashed = blake2b(login.encode(), digest_size=32).hexdigest()
@@ -135,7 +135,6 @@ def transfer(user, amount, reciver, current_balance):
         for line in login_stor:
             if user_hashed == line.split(",")[0]:
                 for attempt in range(0,3):
-                    password = input()
                     password = maskpass.askpass(prompt="Repeat your password: ", mask="*")
                     password_hashed = blake2b(password.encode()).hexdigest()
                     if password_hashed == line.split(",")[1].strip("\n"):
@@ -173,7 +172,6 @@ def withdraw(user, amount, current_balance):
         for line in login_stor:
             if user_hashed == line.split(",")[0]:
                 for attempt in range(0,3):
-                    password = input()
                     password = maskpass.askpass(prompt="Repeat your password: ", mask="*")
                     password_hashed = blake2b(password.encode()).hexdigest()
                     if password_hashed == line.split(",")[1].strip("\n"):
@@ -198,7 +196,6 @@ def deposit_cash(user, amount, current_balance):
         for line in login_stor:
             if user_hashed == line.split(",")[0]:
                 for attempt in range(0,3):
-                    password = input()
                     password = maskpass.askpass(prompt="Repeat your password: ", mask="*")
                     password_hashed = blake2b(password.encode()).hexdigest()
                     if password_hashed == line.split(",")[1].strip("\n"):
