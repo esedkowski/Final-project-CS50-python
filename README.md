@@ -1,7 +1,10 @@
-    # Local bank
-    #### Video Demo:  <URL HERE>
-    #### Description:
-    The main goal of this project is to simulate bank on local computer, especially such functions as creating an account, signing in, depositing, withdrawing and transfering money.
-     
-    
-    Your README.md file should be minimally multiple paragraphs in length, and should explain what your project is, what each of the files you wrote for the project contains and does, and if you debated certain design choices, explaining why you made them. Ensure you allocate sufficient time and energy to writing a README.md that documents your project thoroughly. Be proud of it! If it is too short, the system will reject it.
+# Local bank
+#### Video Demo:  <URL HERE>
+#### Description:
+    The main goal of this project is to simulate bank on local computer, especially such functions as creating an account, signing in, depositing, withdrawing, and transferring money. To make it more **bank like** information about accounts are stored in files, so after turning off and back on, user can still log to his/her account. What is more, all information is encrypted so it is not possible to malicious person to find out about user's credentials or amount of money they have stored on their accounts.
+    After running project.py user is greeted with question what he/she would like to do and can chose from three options: sign up, sign in and exit. Wrong input will result with reprompt, as long as user doesn't choose from one of available options (or use Ctrl-c combination), which is achieved by **while True** loop.
+    After choosing option **Sign up** user is asked to enter his/her first deposit and after new login and password. Login must not be used by anyone else, and password has to contain at least one uppercase letter, one lowercase letter, one symbol and one number to be accepted. Also, when user inputs password, it is hidden behind star symbol, to prevent anyone from overlooking it. The same apply to sign in. After that login and password are encrypted using blake2b algorithm and stored in csv file. Second to that, login and first deposit are encrypted using Fenret module. The key is generated from user password and with login as salt so it can be recreated in the future.
+    Choosing **Sign in** will result with prompt for login and then password. After that both of them are encrypted using the same method as when creating account and compared with csv file. If there is a match program greets user with his/her name and tell his/her account balance. After that user can choose from five options, which are: deposit money, withdraw money, transfer money, log out or log out and quit.
+    Deposit and withdraw ask user for amount of money and then add or subtract from their balance exact amount. In case of withdraw program checks if user has enough money in their account and if not prints appropriate error.
+    If user chose transfer, he/she is asked for amount of money and user they want to transfer money to. Similar to withdraw option, if amount exceeds account balance or if there is no user of name given by user program prints appropriate message.
+    Choosing to log out will delete current variables and return to first loop where user can choose to sign in, sign up or quit. Choosing to quit will quit program.
