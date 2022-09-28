@@ -1,5 +1,5 @@
 # Local bank
-#### Video Demo:  <URL HERE>
+#### Video Demo: https://youtu.be/6vmz40TJmQA
 #### Description:
     The main goal of this project is to simulate bank on local computer, especially such functions as creating an account, signing in, depositing, withdrawing, and transferring money. To make it more **bank like** information about accounts are stored in files, so after turning off and back on, user can still log to his/her account. What is more, all information is encrypted so it is not possible to malicious person to find out about user's credentials or amount of money they have stored on their accounts.
     After running project.py user is greeted with question what he/she would like to do and can chose from three options: sign up, sign in and exit. Wrong input will result with reprompt, as long as user doesn't choose from one of available options (or use Ctrl-c combination), which is achieved by **while True** loop.
